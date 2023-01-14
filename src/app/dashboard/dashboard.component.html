@@ -1,1 +1,9 @@
-<p>dashboard works!</p>
+<mat-drawer-container class="dashboard-container" autosize>
+  <mat-drawer [opened]="true" #drawer class="sidenav" mode="side">
+    <app-sidenav></app-sidenav>
+  </mat-drawer>
+  <app-header (toggleSidebar)="drawer.toggle()"></app-header>
+  <app-wrapper>
+    <router-outlet></router-outlet>
+  </app-wrapper>
+</mat-drawer-container>
