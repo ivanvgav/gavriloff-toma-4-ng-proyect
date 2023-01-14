@@ -1,4 +1,4 @@
-<div>
+<div class="flex justify-content-center align-content-center">
     <mat-card class="col-4">
       <mat-card-header class="mb-3">
         <mat-card-title>Log In</mat-card-title>
@@ -6,13 +6,13 @@
       <mat-card-content>
         <form class="flex flex-column" [formGroup]="form">
           <mat-form-field appearance="outline">
-            <mat-label>Outline form field</mat-label>
-            <input formControlName="email" type="email" matInput placeholder="Placeholder">
+            <mat-label>Email: name@mail.com</mat-label>
+            <input formControlName="email" type="email" matInput placeholder="mail">
             <mat-icon matSuffix>email</mat-icon>
           </mat-form-field>
           <mat-form-field appearance="outline">
-            <mat-label>Outline form field</mat-label>
-            <input formControlName="password" type="password" matInput placeholder="Placeholder">
+            <mat-label>Password</mat-label>
+            <input formControlName="password" type="password" matInput placeholder="password">
             <mat-icon matSuffix>key</mat-icon>
           </mat-form-field>
         </form>
