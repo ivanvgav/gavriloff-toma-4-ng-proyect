@@ -8,6 +8,9 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { HeaderComponent } from './layout/header/header.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ProfileComponent } from './profile/profile.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,7 +18,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     DashboardComponent,
     WrapperComponent,
     SidenavComponent,
-    HeaderComponent
+    HeaderComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +27,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     DashboardRoutingModule,
     MatSidenavModule,
     DashboardRoutingModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatFormFieldModule,
+    ReactiveFormsModule
   ]
 })
 export class DashboardModule { }
