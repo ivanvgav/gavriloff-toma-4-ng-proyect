@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Student } from 'src/app/core/models/student.model';
 
 @Component({
@@ -19,7 +19,7 @@ export class StudentModalComponent implements OnInit {
   });
 
   constructor(
-    //private readonly dialogRef: DialogRef,
+    private readonly dialogRef: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: Student | undefined,
   ) {
     if (data) {
@@ -31,7 +31,7 @@ export class StudentModalComponent implements OnInit {
   }
 
   close() {
-    //this.dialogRef.close()
+    this.dialogRef.closeAll()
   }
 
 }

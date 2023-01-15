@@ -6,6 +6,8 @@ import { StudentModalComponent } from './components/student-modal/student-modal.
 import { StudentDetailComponent } from './pages/student-detail/student-detail.component';
 import { StudentsRoutingModule } from './students-routing.module';
 import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -20,6 +22,8 @@ import { MatTableModule } from '@angular/material/table';
     SharedModule,
     StudentsRoutingModule,
     MatTableModule,
+    MatDialogModule,
+    ReactiveFormsModule
   ]
 })
 export class StudentsModule { }
