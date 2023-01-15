@@ -1,0 +1,9 @@
+<h2>
+    <ng-container *ngIf="student;else elseTemplate">
+      Details: <b>{{ student.name }} {{ student.surname }}</b>
+    </ng-container>
+    <ng-template #elseTemplate>
+      Student not found!
+    </ng-template>
+</h2>
+  
