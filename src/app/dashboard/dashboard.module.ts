@@ -11,6 +11,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ProfileComponent } from './profile/profile.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -29,7 +30,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     DashboardRoutingModule,
     MatToolbarModule,
     MatFormFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatIconModule,
+  ],
+  exports: [
+    MatFormFieldModule,
+    MatIconModule,
+    ReactiveFormsModule,
   ]
 })
 export class DashboardModule { }

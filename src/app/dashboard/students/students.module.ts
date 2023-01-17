@@ -8,6 +8,9 @@ import { StudentsRoutingModule } from './students-routing.module';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DashboardModule } from '../dashboard.module';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -19,10 +22,18 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
+    DashboardModule,
     SharedModule,
     StudentsRoutingModule,
     MatTableModule,
     MatDialogModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatIconModule
+  ],
+  exports: [
+    MatFormFieldModule,
+    MatIconModule,
     ReactiveFormsModule
   ]
 })
