@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
-import { StudentsComponent } from './students/students.component';
 
 
 const routes: Routes = [
@@ -13,17 +12,15 @@ const routes: Routes = [
     children: [
       {
         path: 'students',
-        component: StudentsComponent,
-        // loadChildren: () => import('./students/students.module').then((module) => module.StudentsModule)
+        loadChildren: () => import('./students/students.module').then((module) => module.StudentsModule)
       },
       {
         path: 'courses',
-        
-        // loadChildren: () => import('./courses/courses.module').then((module) => module.CoursesModule)
+        loadChildren: () => import('./courses/courses.module').then((module) => module.CoursesModule)
       },
       {
         path: 'commissions',
-        // loadChildren: () => import('./commisions/comissions.module').then((module) => module.ComissionsModule)
+        loadChildren: () => import('./commisions/comissions.module').then((module) => module.ComissionsModule)
       },
       {
         path: 'profile',
