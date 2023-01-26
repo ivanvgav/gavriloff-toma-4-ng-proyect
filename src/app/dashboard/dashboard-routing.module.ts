@@ -6,6 +6,12 @@ import { ProfileComponent } from './profile/profile.component';
 
 
 const routes: Routes = [
+  // {
+  //   path: 'students',
+  //   component: StudentsComponent,
+  //   loadChildren: () => import('./students/students.module').then((module) => module.StudentsModule)
+  // },
+
   {
     path: '',
     component: DashboardComponent,
