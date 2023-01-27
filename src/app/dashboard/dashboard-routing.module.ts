@@ -6,34 +6,22 @@ import { ProfileComponent } from './profile/profile.component';
 
 
 const routes: Routes = [
-  // {
-  //   path: 'students',
-  //   component: StudentsComponent,
-  //   loadChildren: () => import('./students/students.module').then((module) => module.StudentsModule)
-  // },
-
   {
-    path: '',
-    component: DashboardComponent,
-    children: [
-      {
-        path: 'students',
-        loadChildren: () => import('./students/students.module').then((module) => module.StudentsModule)
-      },
-      {
-        path: 'courses',
-        loadChildren: () => import('./courses/courses.module').then((module) => module.CoursesModule)
-      },
-      {
-        path: 'commissions',
-        loadChildren: () => import('./commisions/comissions.module').then((module) => module.ComissionsModule)
-      },
-      {
-        path: 'profile',
-        component: ProfileComponent,
-      }
-    ]
+    path: 'students',
+    loadChildren: () => import('./students/students.module').then((module) => module.StudentsModule)
   },
+  {
+    path: 'courses',
+    loadChildren: () => import('./courses/courses.module').then((module) => module.CoursesModule)
+  },
+  {
+    path: 'commissions',
+    loadChildren: () => import('./commisions/comissions.module').then((module) => module.ComissionsModule)
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+  }
 ];
 
 @NgModule({
