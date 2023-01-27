@@ -30,8 +30,10 @@ export class AuthService {
           this.htttpClient.get<SingleUserResponse>(`${this.apiURL}/users/8`)
         ),
         map(
-          ({ data }) =>
-            new User(data.id, data.email, data.name, data.surname, data.avatar)
+          ({ data }) => {
+            console.log(data)
+            return new User(data.id, data.email, data.first_name, data.last_name, data.avatar)
+             }
         ),
         tap((user) => this.sessionService.setUser(user))
       );
@@ -49,7 +51,7 @@ export class AuthService {
       ),
       tap(({ data }) =>
         this.sessionService.setUser(
-          new User(data.id, data.email, data.name, data.surname, data.avatar)
+          new User(data.id, data.email, data.first_name, data.last_name, data.avatar)
         )
       ),
       map((user) => !!user),

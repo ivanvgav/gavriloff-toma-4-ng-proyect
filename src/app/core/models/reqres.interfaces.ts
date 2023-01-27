@@ -5,8 +5,8 @@ export interface LoginSuccessful {
 export interface IUser {
     id: number;
     email: string;
-    name: string;
-    surname: string;
+    first_name: string;
+    last_name: string;
     avatar: string;
 }
 

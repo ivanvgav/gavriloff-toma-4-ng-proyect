@@ -16,6 +16,7 @@ export class HeaderComponent implements OnDestroy {
     this.sessionService.user$
       .pipe(takeUntil(this.destroyed$))
       .subscribe((user) => {
+        console.log(user)
         if (user) this.user = user;
       })
    }
