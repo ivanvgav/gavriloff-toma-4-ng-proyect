@@ -44,7 +44,7 @@ export class StudentsComponent implements OnDestroy {
       }
     })
   }
-  
+
   deleteStudent(element: Student) {
     this.studentsService.removeStudent(element.id);
   }
