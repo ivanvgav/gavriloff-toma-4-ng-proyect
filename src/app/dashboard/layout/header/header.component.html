@@ -3,7 +3,7 @@
       <mat-icon>menu</mat-icon>
     </button>
     <b style="cursor: pointer;" *ngIf="user;else templateName" routerLink="my-profile">
-      Usuario: {{ user.name }}
+      Usuario: {{ user.fullName }}
     </b>
     <ng-template #templateName>
       <button routerLink="/auth/login" mat-flat-button color="primary">Iniciar sesión</button>
