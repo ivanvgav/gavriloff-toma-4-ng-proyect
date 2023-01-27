@@ -27,7 +27,6 @@ import { MatIconModule } from '@angular/material/icon';
     SharedModule,
     DashboardRoutingModule,
     MatSidenavModule,
-    DashboardRoutingModule,
     MatToolbarModule,
     MatFormFieldModule,
     ReactiveFormsModule,
