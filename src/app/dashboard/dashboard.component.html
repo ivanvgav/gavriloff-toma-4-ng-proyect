@@ -1,9 +1,9 @@
-<mat-drawer-container autosize>
+<mat-drawer-container>
   <mat-drawer [opened]="true" #drawer class="sidenav" mode="side">
     <app-sidenav></app-sidenav>
   </mat-drawer>
   <app-header (toggleSidebar)="drawer.toggle()"></app-header>
-  <app-wrapper>
+  <app-wrapper class="content">
     <router-outlet></router-outlet>
   </app-wrapper>
 </mat-drawer-container>

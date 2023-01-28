@@ -22,12 +22,12 @@ export class StudentModalComponent implements OnInit {
     private readonly dialogRef: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: Student | undefined,
   ) {
-    if (data) {
-      this.studentForm.patchValue(data);
-    }
-   }
+  }
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    if (this.data) {
+      this.studentForm.patchValue(this.data);
+    }
+    // throw new Error('Method not implemented.');
   }
 
   close() {

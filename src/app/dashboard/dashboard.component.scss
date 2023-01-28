@@ -1,4 +1,10 @@
 .sidenav {
-    width: 250px;
+    width: 15%;
     padding: 25px;
 }
+
+.content {
+    width: 85%;
+}
+
+mat-drawer-container { height: 100%; }
