@@ -16,7 +16,7 @@ const routes: Routes = [
   },
   {
     path: 'commissions',
-    loadChildren: () => import('./commisions/comissions.module').then((module) => module.ComissionsModule)
+    loadChildren: () => import('./commisions/commisions.module').then((module) => module.ComissionsModule)
   },
   {
     path: 'profile',
