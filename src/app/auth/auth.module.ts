@@ -18,10 +18,12 @@ import { LoginComponent } from './pages/login/login.component';
     ReactiveFormsModule,
     HttpClientModule,
     SharedModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+    HttpClientModule
   ],
   providers: [
     AuthService,
+    HttpClientModule
   ]
 })
 export class AuthModule { }
