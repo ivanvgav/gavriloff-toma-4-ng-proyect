@@ -15,7 +15,7 @@ const routes: Routes = [
     loadChildren: () => import('./courses/courses.module').then((module) => module.CoursesModule)
   },
   {
-    path: 'commissions',
+    path: 'commisions',
     loadChildren: () => import('./commisions/commisions.module').then((module) => module.ComissionsModule)
   },
   {

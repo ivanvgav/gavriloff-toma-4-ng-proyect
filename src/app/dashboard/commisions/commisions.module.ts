@@ -4,6 +4,7 @@ import { CommisionsComponent } from './commisions.component';
 import { MatTableModule } from '@angular/material/table';
 import { SharedModule } from 'src/app/shared/modules/shared.module';
 import { MatSortModule } from '@angular/material/sort';
+import { CommisionsRoutingModule } from './commisions-routing.module';
 
 
 
@@ -13,6 +14,7 @@ import { MatSortModule } from '@angular/material/sort';
   ],
   imports: [
     CommonModule,
+    CommisionsRoutingModule,
     MatTableModule,
     MatSortModule,
     SharedModule

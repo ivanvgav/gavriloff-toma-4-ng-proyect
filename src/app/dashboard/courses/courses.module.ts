@@ -4,6 +4,7 @@ import { CoursesComponent } from './courses.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { SharedModule } from 'src/app/shared/modules/shared.module';
+import { CoursesRoutingModule } from './courses-routing.module';
 
 
 
@@ -13,6 +14,7 @@ import { SharedModule } from 'src/app/shared/modules/shared.module';
   ],
   imports: [
     CommonModule,
+    CoursesRoutingModule,
     MatTableModule,
     MatSortModule,
     SharedModule
