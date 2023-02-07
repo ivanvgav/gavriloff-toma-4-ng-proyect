@@ -15,26 +15,28 @@ const ELEMENT_DATA: PeriodicElement[] = [
   { position: 3, course: 'Pedagogy 101', year: 1, availability: false },
   {
     position: 4,
-    course: 'Institutional education',
+    course: 'Institutional',
     year: 2,
     availability: true,
   },
   { position: 5, course: 'Anatomy', year: 1, availability: true },
-  { position: 6, course: 'Learning Methods', year: 1, availability: true },
+  /*
+  { position: 6, course: 'Methods', year: 1, availability: true },
   {
     position: 7,
-    course: 'Psychology of perception',
+    course: 'Perception\'s psycho',
     year: 2,
     availability: true,
   },
   {
     position: 8,
-    course: 'Philosophy of science',
+    course: 'History',
     year: 2,
     availability: false,
   },
-  { position: 9, course: 'Final practice', year: 4, availability: false },
+  { position: 9, course: 'Practice', year: 4, availability: false },
   { position: 10, course: 'Animal biology', year: 2, availability: true },
+  */
 ];
 
 /**
