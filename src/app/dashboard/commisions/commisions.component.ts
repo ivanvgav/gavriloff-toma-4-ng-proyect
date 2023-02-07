@@ -10,11 +10,11 @@ export interface PeriodicElement {
   year: number;
 }
 const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', subject: 'Philosophy', year: 2},
-  {position: 2, name: 'Helium', subject: 'Biology', year: 1},
-  {position: 3, name: 'Lithium', subject: 'Biology', year: 3},
-  {position: 4, name: 'Beryllium', subject: 'Education', year: 4},
-  {position: 5, name: 'Boron', subject: 'Philosophy', year: 1},
+  {position: 1, name: 'Gavriloff, Ivan V.', subject: 'Philosophy', year: 2},
+  {position: 2, name: 'García, Ana', subject: 'Biology', year: 1},
+  {position: 3, name: 'López, José', subject: 'Biology', year: 3},
+  {position: 4, name: 'Betanqur, Ingrid', subject: 'Education', year: 4},
+  {position: 5, name: 'Boron, Atílio', subject: 'Philosophy', year: 1},
 ];
 /**
  * @title Table with sorting
