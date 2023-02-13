@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthService } from './auth/services/auth.service';
+
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Gavriloff Angular Project';
+  constructor(public authService: AuthService) {}
+  ngOnInit(): void {
+    this.authService.verifyToken()
+  }
 }
