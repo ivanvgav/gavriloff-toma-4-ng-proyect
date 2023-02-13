@@ -20,8 +20,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     availability: true,
   },
   { position: 5, course: 'Anatomy', year: 1, availability: true },
-  /*
-  { position: 6, course: 'Methods', year: 1, availability: true },
+    { position: 6, course: 'Methods', year: 1, availability: true },
   {
     position: 7,
     course: 'Perception\'s psycho',
@@ -36,7 +35,6 @@ const ELEMENT_DATA: PeriodicElement[] = [
   },
   { position: 9, course: 'Practice', year: 4, availability: false },
   { position: 10, course: 'Animal biology', year: 2, availability: true },
-  */
 ];
 
 /**
