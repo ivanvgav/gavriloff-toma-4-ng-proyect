@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/modules/shared.module';
 import { HttpClientModule } from '@angular/common/http';
+import { EffectsModule } from '@ngrx/effects';
+import { AppStoreModule } from './app-store.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,10 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    AppStoreModule,
+    EffectsModule.forRoot([]),
+
   ],
   providers: [],
   bootstrap: [AppComponent]

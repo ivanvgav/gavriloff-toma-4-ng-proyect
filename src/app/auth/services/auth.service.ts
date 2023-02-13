@@ -6,8 +6,10 @@ import {
   LoginSuccessful,
   SingleUserResponse,
 } from 'src/app/core/models/reqres.interfaces';
+import { Store } from "@ngrx/store";
 import { User } from 'src/app/core/models/user.model';
-import { SessionService } from 'src/app/core/services/session.service';
+import { setAuthenticatedUser, unsetAuthenticatedUser } from '../store/auth.actions';
+import { AppState } from 'src/app/core/models/app-state.model';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +19,7 @@ export class AuthService {
 
   constructor(
     private readonly htttpClient: HttpClient,
-    private readonly sessionService: SessionService,
+    private readonly store: Store<AppState>,
     private readonly router: Router,
   ) {}
 
@@ -30,12 +32,22 @@ export class AuthService {
           this.htttpClient.get<SingleUserResponse>(`${this.apiURL}/users/8`)
         ),
         map(
-          ({ data }) => {
-            console.log(data)
-            return new User(data.id, data.email, data.first_name, data.last_name, data.avatar)
-             }
+          ({ data }) =>
+            new User(
+              data.id,
+              data.email,
+              data.first_name,
+              data.last_name,
+              data.avatar
+            )
         ),
-        tap((user) => this.sessionService.setUser(user))
+        tap(
+          (user) => this.store.dispatch(
+            setAuthenticatedUser({
+              authenticatedUser: user
+            })
+          )
+        )
       );
   }
 
@@ -50,8 +62,12 @@ export class AuthService {
         this.htttpClient.get<SingleUserResponse>(`${this.apiURL}/users/7`)
       ),
       tap(({ data }) =>
-        this.sessionService.setUser(
-          new User(data.id, data.email, data.first_name, data.last_name, data.avatar)
+        this.store.dispatch(
+          setAuthenticatedUser({
+            authenticatedUser: new User(
+              data.id, data.email, data.first_name, data.last_name, data.avatar
+            )
+          })
         )
       ),
       map((user) => !!user),
@@ -61,7 +77,7 @@ export class AuthService {
 
   loginOut() {
     localStorage.removeItem('token');
-    this.sessionService.setUser(null);
+    this.store.dispatch(unsetAuthenticatedUser());
     this.router.navigate(['auth', 'login'])
   }
 }
