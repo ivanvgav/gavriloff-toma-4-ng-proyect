@@ -20,7 +20,7 @@ import { MatIconModule } from '@angular/material/icon';
     WrapperComponent,
     SidenavComponent,
     HeaderComponent,
-    ProfileComponent
+    ProfileComponent,
   ],
   imports: [
     CommonModule,

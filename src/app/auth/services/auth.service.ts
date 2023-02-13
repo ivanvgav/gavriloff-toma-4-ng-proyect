@@ -8,8 +8,9 @@ import {
 } from 'src/app/core/models/reqres.interfaces';
 import { Store } from "@ngrx/store";
 import { User } from 'src/app/core/models/user.model';
-import { setAuthenticatedUser, unsetAuthenticatedUser } from '../store/auth.actions';
+import { login, verifyToken, logOut } from '../store/auth.actions';
 import { AppState } from 'src/app/core/models/app-state.model';
+import { selectIsAuthenticated } from '../store/auth.selectors';
 
 @Injectable({
   providedIn: 'root',
@@ -17,67 +18,25 @@ import { AppState } from 'src/app/core/models/app-state.model';
 export class AuthService {
   apiURL = 'https://reqres.in/api';
 
+  public isAuthenticated$: Observable<boolean>;
+
   constructor(
-    private readonly htttpClient: HttpClient,
     private readonly store: Store<AppState>,
     private readonly router: Router,
-  ) {}
-
-  login(data: { email: string; password: string }): Observable<User> {
-    return this.htttpClient
-      .post<LoginSuccessful>(`${this.apiURL}/login`, data)
-      .pipe(
-        tap((data) => localStorage.setItem('token', data.token)),
-        mergeMap(() =>
-          this.htttpClient.get<SingleUserResponse>(`${this.apiURL}/users/8`)
-        ),
-        map(
-          ({ data }) =>
-            new User(
-              data.id,
-              data.email,
-              data.first_name,
-              data.last_name,
-              data.avatar
-            )
-        ),
-        tap(
-          (user) => this.store.dispatch(
-            setAuthenticatedUser({
-              authenticatedUser: user
-            })
-          )
-        )
-      );
+  ) {
+    this.isAuthenticated$ = this.store.select(selectIsAuthenticated);
   }
 
-  verifyToken(): Observable<boolean> {
-    const lsToken = localStorage.getItem('token');
+  login(data: { email: string; password: string }): void {
+    this.store.dispatch(login({ email: data.email, password: data.password}))
+  }
 
-    return of(lsToken).pipe(
-      tap((token) => {
-        if (!token) throw new Error('Token invalido');
-      }),
-      mergeMap((token) =>
-        this.htttpClient.get<SingleUserResponse>(`${this.apiURL}/users/7`)
-      ),
-      tap(({ data }) =>
-        this.store.dispatch(
-          setAuthenticatedUser({
-            authenticatedUser: new User(
-              data.id, data.email, data.first_name, data.last_name, data.avatar
-            )
-          })
-        )
-      ),
-      map((user) => !!user),
-      catchError(() => of(false))
-    );
+  verifyToken() {
+    this.store.dispatch(verifyToken({ token: localStorage.getItem('token') || ''}))
   }
 
   loginOut() {
-    localStorage.removeItem('token');
-    this.store.dispatch(unsetAuthenticatedUser());
+    this.store.dispatch(logOut());
     this.router.navigate(['auth', 'login'])
   }
 }

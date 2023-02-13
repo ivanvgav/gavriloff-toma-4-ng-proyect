@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
@@ -10,7 +10,7 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnDestroy {
+export class LoginComponent implements OnInit, OnDestroy {
   public loading = false;
   public form = new FormGroup({
     email: new FormControl('michael.lawson@reqres.in', [Validators.required]),
@@ -20,13 +20,14 @@ export class LoginComponent implements OnDestroy {
 
   constructor(
     private readonly authService: AuthService,
-    private readonly sessionService: SessionService,
     private readonly router: Router
-  ) {
-    this.sessionService.user$
+  ) {  }
+
+  ngOnInit(): void {
+    this.authService.isAuthenticated$
       .pipe(takeUntil(this.destroyed$))
-      .subscribe((user) => {
-        if (user) {
+      .subscribe((value) => {
+        if (value) {
           this.router.navigate(['dashboard', 'students']);
         }
       });
@@ -43,6 +44,5 @@ export class LoginComponent implements OnDestroy {
         email: this.form.get('email')?.value || '',
         password: this.form.get('password')?.value || '',
       })
-      .subscribe(() => (this.loading = false));
   }
 }

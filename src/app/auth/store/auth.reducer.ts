@@ -1,26 +1,34 @@
 import { createReducer, on } from "@ngrx/store";
 import { User } from "src/app/core/models/user.model";
-import { setAuthenticatedUser, unsetAuthenticatedUser, updateAuthenticatedUser } from "./auth.actions";
+import { login, loginFailure, loginSuccess, logOut, updateAuthenticatedUser, verifyToken, verifyTokenFailure, verifyTokenSuccess } from "./auth.actions";
 
 export const authFeatureKey = 'auth'
 
 export interface AuthState {
     authenticatedUser: User | null;
+    loggingIn: boolean;
+    error: unknown;
 }
 
 const initialState: AuthState = {
     authenticatedUser: null,
+    loggingIn: false,
+    error: null,
 };
 
 export const authReducer = createReducer(
     initialState,
-    on(setAuthenticatedUser, (oldState, payload) => {
-        return {
-            ...oldState,
-            authenticatedUser: payload.authenticatedUser
-        }
+    on(login, (state) => ({ ...state, loggingIn: true })),
+    on(loginSuccess, (state, { authenticatedUser }) => ({ ...state, authenticatedUser, loggingIn: false })),
+    on(loginFailure, (state, { error }) => ({ ...state, loggingIn: false, error })),
+
+    on(verifyToken, (state) => ({ ...state, loggingIn: true })),
+    on(verifyTokenSuccess, (state, { authenticatedUser }) => ({ ...state, authenticatedUser, loggingIn: false })),
+    on(verifyTokenFailure, (state, { error }) => ({ ...state, loggingIn: false, error })),
+    on(logOut, () => {
+      localStorage.removeItem('token');
+      return initialState;
     }),
-    on(unsetAuthenticatedUser, (oldState) => ({ ...oldState, authenticatedUser: null })),
     on(updateAuthenticatedUser, (oldState, payload) => {
         if (!oldState.authenticatedUser) return oldState;
         return {
